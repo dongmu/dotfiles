@@ -12,7 +12,6 @@ set nocp
 
 nmap <leader>w :w!<cr>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -41,7 +40,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -71,6 +70,8 @@ set tm=500
 set nu
 
 " indent
+set autoindent
+set smartindent
 " set foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -79,14 +80,17 @@ set nu
 " Enable syntax highlighting
 syntax enable
 
-colorscheme desert
+" colorscheme desert
+colorscheme monokai
 set background=dark
+
+set t_Co=256
+
 
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
     set guioptions+=e
-    set t_Co=256
     set guitablabel=%M\ %t
 endif
 
@@ -107,7 +111,27 @@ set noswapfile
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
+""""""""""""""""""""""""""""""
+" => vim-airline
+""""""""""""""""""""""""""""""
+
+" let g:airline_section_b = '%{strftime("%c")}'
+" let g:airline_section_y = 'BN: %{bufnr("%")}'
+let g:airline_theme='luna'
+
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#branch#empty_message=''
+
+if !exists('g:airline_symbols')
+ let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr='¶'
+let g:airline_symbols.branch='⎇ '
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Help Function
@@ -116,10 +140,10 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 
 " Returns true if paste mode is enabled
 function! HasPaste()
-	if &paste
-		return 'PASTE MODE '
-	en
-	return ''
+ if &paste
+  return 'PASTE MODE '
+ en
+  return ''
 endfunction
 
 
@@ -161,7 +185,7 @@ let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeWinPos='left'
 let NERDTreeWinSize=31
-nnoremap <F10> :NERDTreeToggle<cr> 
+nnoremap <F10> :NERDTreeToggle<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " VIMTAGBAR
@@ -196,5 +220,5 @@ let g:SrcExpl_prevDefKey="<F3>"
 let g:SrcExpl_nextDefKey="<F4>"
 
 
-
-
+" Take care of Java
+autocmd FileType java setlocal shiftwidth=4 tabstop=4

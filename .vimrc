@@ -81,7 +81,10 @@ set smartindent
 syntax enable
 
 " colorscheme desert
-colorscheme monokai
+" colorscheme monokai
+" colorscheme dracula
+colorscheme atom-dark-256
+" colorscheme monokai-soda
 set background=dark
 
 set t_Co=256
@@ -120,6 +123,7 @@ set laststatus=2
 " let g:airline_section_b = '%{strftime("%c")}'
 " let g:airline_section_y = 'BN: %{bufnr("%")}'
 let g:airline_theme='luna'
+" let g:airline_theme='dracula'
 
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1

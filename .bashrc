@@ -116,4 +116,7 @@ export CCACHE_DIR=~/.ccache
 export PAGER=most
 
 # My own alias
-alias cdd='. cdd'
+function cdd() {
+    cd $(printf "%0.0s../" $(seq 1 $1));
+}
+alias 'up'='cdd'

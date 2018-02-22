@@ -120,3 +120,13 @@ function cdd() {
     cd $(printf "%0.0s../" $(seq 1 $1));
 }
 alias 'up'='cdd'
+
+
+alias tmux='tmux -2'
+
+
+export EDITOR='vim'
+export VISUAL='vim'
+
+
+
